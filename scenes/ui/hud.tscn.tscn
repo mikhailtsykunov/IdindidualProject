@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cgtxuo164sb7w"]
+
+[ext_resource type="Script" uid="uid://b51504iedc2e3" path="res://scenes/ui/hud.tscn.gd" id="1_mqnu3"]
+
+[node name="Hud_tscn" type="CanvasLayer" unique_id=583697977]
+script = ExtResource("1_mqnu3")
+
+[node name="GoldLabel" type="Label" parent="." unique_id=737178787]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Gold: 0"
+
+[node name="LivesLabel" type="Label" parent="." unique_id=763573771]
+offset_left = 334.0
+offset_right = 374.0
+offset_bottom = 23.0
+text = "Lives: 3"

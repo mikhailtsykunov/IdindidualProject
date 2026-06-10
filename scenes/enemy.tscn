@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://baaum2vlk4tys"]
+
+[ext_resource type="Texture2D" uid="uid://yckyl1os10w1" path="res://assets/kenney_tower-defense-top-down/PNG/Default size/towerDefense_tile245.png" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://ckmu6l72g1qeq" path="res://scripts/enemy.gd" id="1_md0e3"]
+
+[node name="PathFollow2D" type="PathFollow2D" unique_id=1392045782]
+script = ExtResource("1_md0e3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=449994033]
+texture = ExtResource("1_7p1mj")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1404778251]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=676041785]
