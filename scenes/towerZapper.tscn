@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://50jy87s82p4n"]
+
+[ext_resource type="Script" uid="uid://c1wsqb2pq5joj" path="res://Scripts/tower_zapper.gd" id="1_knejj"]
+[ext_resource type="Texture2D" uid="uid://dnpfepc8gw5gy" path="res://Assets/art/kenney_tower-defense-top-down/PNG/Default size/towerDefense_tile249.png" id="2_4hjya"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3pber"]
+radius = 200.0
+
+[node name="TowerZapper" type="Node2D" unique_id=1072338212]
+script = ExtResource("1_knejj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1299171110]
+rotation = 1.5707964
+texture = ExtResource("2_4hjya")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1064219608]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1338046131]
+shape = SubResource("CircleShape2D_3pber")
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=1461757495]

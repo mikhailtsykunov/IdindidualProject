@@ -1,38 +1,32 @@
-# enemy.gd
 extends PathFollow2D
 
-@export var stats: EnemyStats       # Resource containing health, speed, reward, etc.
+signal died(value)
 
-var health: float
-var speed: float
-var alive: bool = true
-
-signal died
-
-func _ready():
-	health = stats.max_health
-	speed = stats.speed
+var health = 10
+var reward = 10
+@export var speed = 100.0
 
 func _process(delta):
-	if not alive:
-		return
-
-	# Move forward along the path
 	progress += speed * delta
 
-	# Check if we reached the end of the curve
-	var path_length = get_parent().curve.get_baked_length()
-	if progress >= path_length:
-		alive = false
-		GameManager.lose_life(1)    # Enemy leaked through
+	if progress_ratio >= 0.99:
+		# Ищем главную сцену через дерево
+		var main = get_tree().root.get_child(get_tree().root.get_child_count() - 1)
+		
+		if main.has_method("take_damage"):
+			main.take_damage(1)
+			print("Враг дошел! Урон нанесен.")
+		else:
+			print("Ошибка: Функция take_damage не найдена в Main!")
+			
 		queue_free()
 
-func take_damage(amount: float):
-	if not alive:
-		return
+
+func take_damage(amount):
 	health -= amount
 	if health <= 0:
-		alive = false
-		emit_signal("died")
-		GameManager.add_gold(stats.reward)
-		queue_free()
+		die()
+
+func die():
+	died.emit(reward) 
+	queue_free()

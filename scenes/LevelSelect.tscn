@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://dviurhtrcci67"]
+
+[ext_resource type="Script" uid="uid://bawq0o7ejd3ce" path="res://Scripts/level_select.gd" id="1_chbko"]
+
+[node name="LevelSelect" type="Control" unique_id=320299688]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_chbko")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1558610975]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1999956519]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1339301449]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1158915104]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 48.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=942321519]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer" unique_id=1403720729]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 3
+
+[node name="ButtonLevel1" type="Button" parent="VBoxContainer/GridContainer" unique_id=2069654423]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "1"
+
+[node name="ButtonLevel2" type="Button" parent="VBoxContainer/GridContainer" unique_id=1832650000]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "2"
+
+[node name="ButtonLevel3" type="Button" parent="VBoxContainer/GridContainer" unique_id=984173724]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "3"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=198978785]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BackButton" type="Button" parent="MarginContainer" unique_id=568979090]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="VBoxContainer/GridContainer/ButtonLevel1" to="." method="_on_button_level_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/ButtonLevel2" to="." method="_on_button_level_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/ButtonLevel3" to="." method="_on_button_level_3_pressed"]
+[connection signal="pressed" from="MarginContainer/BackButton" to="." method="_on_back_button_pressed"]

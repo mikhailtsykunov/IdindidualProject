@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dsugf6uwdghce"]
+
+[ext_resource type="Script" uid="uid://d30qk3wvhgpkn" path="res://Scenes/main_menu.gd" id="1_web8u"]
+[ext_resource type="Texture2D" uid="uid://b5kx0gu6gaa85" path="res://Assets/Menu/images-_1_.png" id="2_rtnl3"]
+
+[node name="Mainmenu" type="Control" unique_id=1413690821]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_web8u")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=851339881]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 650.0
+texture = ExtResource("2_rtnl3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect" unique_id=989571386]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 649.0
+
+[node name="PlayButton" type="Button" parent="." unique_id=1233231430]
+layout_mode = 0
+offset_left = 308.0
+offset_top = 141.0
+offset_right = 802.0
+offset_bottom = 274.0
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="." unique_id=1158968606]
+layout_mode = 0
+offset_left = 307.0
+offset_top = 375.0
+offset_right = 802.0
+offset_bottom = 507.0
+text = "Quit"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

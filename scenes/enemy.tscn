@@ -1,16 +1,18 @@
-[gd_scene format=3 uid="uid://baaum2vlk4tys"]
+[gd_scene format=3 uid="uid://dl52ma5uaavjd"]
 
-[ext_resource type="Texture2D" uid="uid://yckyl1os10w1" path="res://assets/kenney_tower-defense-top-down/PNG/Default size/towerDefense_tile245.png" id="1_7p1mj"]
-[ext_resource type="Script" uid="uid://ckmu6l72g1qeq" path="res://scripts/enemy.gd" id="1_md0e3"]
+[ext_resource type="Script" uid="uid://cie0y8c0thfcq" path="res://Scripts/enemy.gd" id="1_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://yckyl1os10w1" path="res://Assets/art/kenney_tower-defense-top-down/PNG/Default size/towerDefense_tile245.png" id="1_7k104"]
 
-[node name="PathFollow2D" type="PathFollow2D" unique_id=1392045782]
-script = ExtResource("1_md0e3")
+[sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
+radius = 14.3178215
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=449994033]
-texture = ExtResource("1_7p1mj")
+[node name="Enemy" type="PathFollow2D" unique_id=1844790730 groups=["enemies"]]
+script = ExtResource("1_4gyqm")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1404778251]
-collision_layer = 2
-collision_mask = 0
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=810394675]
+texture = ExtResource("1_7k104")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=676041785]
+[node name="Area2D" type="Area2D" parent="." unique_id=246982677]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2009731878]
+shape = SubResource("CircleShape2D_4gyqm")

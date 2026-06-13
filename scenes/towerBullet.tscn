@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://crbi6rg2iekmh"]
+
+[ext_resource type="Script" uid="uid://breomp8pus782" path="res://Scripts/tower_bullet.gd" id="1_x2hf4"]
+[ext_resource type="Texture2D" uid="uid://cqijv3t3o510a" path="res://Assets/art/kenney_tower-defense-top-down/PNG/Default size/towerDefense_tile250.png" id="2_gpahu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3v1oj"]
+radius = 359.70126
+
+[node name="TowerBullet" type="Node2D" unique_id=1701148229]
+script = ExtResource("1_x2hf4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=356635139]
+rotation = 1.5707964
+texture = ExtResource("2_gpahu")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1380906128]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=391209806]
+shape = SubResource("CircleShape2D_3v1oj")
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=2094595875]
+autostart = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
