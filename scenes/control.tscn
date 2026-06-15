@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://di684sqn46gmm"]
+
+[ext_resource type="Script" uid="uid://cnx3p76lid1on" path="res://scripts/UpgradeMenu.gd" id="1_5p55f"]
+
+[node name="UpgradeMenu" type="Control" unique_id=1570792669]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 6.0
+offset_right = 117.0
+offset_bottom = 255.0
+mouse_filter = 1
+script = ExtResource("1_5p55f")
+
+[node name="SellButton" type="Button" parent="." unique_id=98682753]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 85.0
+offset_right = 113.0
+offset_bottom = 169.0
+text = "Sell"
+
+[node name="CloseButton" type="Button" parent="." unique_id=1984921303]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 172.0
+offset_right = 113.0
+offset_bottom = 256.0
+text = "Close"
+
+[node name="UpgradeButton" type="Button" parent="." unique_id=865299179]
+layout_mode = 0
+offset_left = -7.0
+offset_top = -1.0
+offset_right = 113.0
+offset_bottom = 83.0
+text = "Upgrade"
+
+[connection signal="pressed" from="SellButton" to="." method="_on_sell_button_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="UpgradeButton" to="." method="_on_upgrade_button_pressed"]

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cqijv3t3o510a" path="res://assets/kenney_tower-defense-top-down/PNG/Default size/towerDefense_tile250.png" id="4_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://c6cddu3mn1kcm" path="res://assets/kenney_tower-defense-top-down/PNG/Default size/towerDefense_tile181.png" id="5_hptm8"]
 [ext_resource type="Texture2D" uid="uid://wf1ahfwe8oqv" path="res://assets/kenney_tower-defense-top-down/PNG/Default size/towerDefense_tile287.png" id="6_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://di684sqn46gmm" path="res://scenes/control.tscn" id="7_o6xl0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0xm2m"]
 texture = ExtResource("2_6bp64")
@@ -4632,6 +4633,8 @@ text = "Menu"
 label_settings = SubResource("LabelSettings_efxa6")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="UpgradeMenu" parent="CanvasLayer/UI" unique_id=1570792669 instance=ExtResource("7_o6xl0")]
 
 [node name="BuildZones" type="Area2D" parent="." unique_id=517722786 groups=["build_zone"]]
 position = Vector2(304, 154)

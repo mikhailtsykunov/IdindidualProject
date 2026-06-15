@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://sywer6jp3f7m"]
 
-[ext_resource type="Script" uid="uid://iscpx8c4ip2p" path="res://Scripts/tower_bank.gd" id="1_wbmah"]
-[ext_resource type="Texture2D" uid="uid://c6cddu3mn1kcm" path="res://Assets/art/kenney_tower-defense-top-down/PNG/Default size/towerDefense_tile181.png" id="2_a32im"]
-[ext_resource type="Texture2D" uid="uid://wf1ahfwe8oqv" path="res://Assets/art/kenney_tower-defense-top-down/PNG/Default size/towerDefense_tile287.png" id="3_a32im"]
+[ext_resource type="Script" uid="uid://iscpx8c4ip2p" path="res://scripts/tower_bank.gd" id="1_wbmah"]
+[ext_resource type="Texture2D" uid="uid://c6cddu3mn1kcm" path="res://assets/kenney_tower-defense-top-down/PNG/Default size/towerDefense_tile181.png" id="2_a32im"]
+[ext_resource type="Script" uid="uid://dlehdu5atvgrh" path="res://scripts/tower_upgrader.gd" id="2_fvy4c"]
+[ext_resource type="Texture2D" uid="uid://wf1ahfwe8oqv" path="res://assets/kenney_tower-defense-top-down/PNG/Default size/towerDefense_tile287.png" id="3_a32im"]
 
 [node name="TowerBank" type="Node2D" unique_id=975223415]
 script = ExtResource("1_wbmah")
+
+[node name="TowerUpgrader" type="Node" parent="." unique_id=889469303]
+script = ExtResource("2_fvy4c")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1631334166]
 texture = ExtResource("2_a32im")

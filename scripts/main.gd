@@ -1,6 +1,8 @@
 extends Node2D
 
 # --- Глобальные переменные ---
+@onready var upgrade_menu = $CanvasLayer/UI/UpgradeMenu
+
 var money = 100
 var lives = 20
 var wave = 0
@@ -23,9 +25,14 @@ var game_won = false
 var game_over = false
 
 func _ready():
-	# Даем небольшую паузу перед первой волной
+	# Скрываем панели, чтобы они не блокировали клики мыши во время игры
+	$CanvasLayer/UI/PanelGameOver.visible = false
+	$CanvasLayer/UI/PanelWin.visible = false
+	
+	# Ваша старая логика таймера волны
 	$TimerWave.wait_time = 2.0
 	$TimerWave.start()
+
 
 func _process(_delta: float) -> void:
 	# Обновление UI
@@ -36,6 +43,11 @@ func _process(_delta: float) -> void:
 	# Логика "призрака" башни
 	if ghost_tower:
 		ghost_tower.global_position = snap_to_grid(get_global_mouse_position())
+		
+	# Обновление текста и доступности кнопок в меню улучшения (если оно открыто)
+	if upgrade_menu and upgrade_menu.visible:
+		upgrade_menu.update_ui_text()
+
 
 func _physics_process(_delta: float) -> void:
 	# Приоритет проигрыша
@@ -57,11 +69,25 @@ func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 		cancel_build()
 
-	# Постройка на левую кнопку
+	# Постройка или вызов меню на левую кнопку
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		# ПРОВЕРКА: Если клик был по кнопке UI или любому другому элементу интерфейса
+		# то прекращаем выполнение кода, чтобы не сбивать фокус с меню
+		if upgrade_menu and upgrade_menu.visible:
+			# Проверяем, находится ли курсор физически над границами меню
+			# Если да — отдаем приоритет кнопкам UI и выходим
+			if upgrade_menu.get_global_rect().has_point(get_global_mouse_position()):
+				return 
+
+		# РЕЖИМ СТРОИТЕЛЬСТВА
 		if current_tower_scene and money >= 25:
 			if is_mouse_in_build_zone():
 				place_tower()
+		# РЕЖИМ ВЫЗОВА МЕНЮ (если ничего не строим)
+		else:
+			try_upgrade_tower_at_mouse()
+
+
 
 func place_tower():
 	var target_pos = snap_to_grid(get_global_mouse_position())
@@ -90,6 +116,12 @@ func cancel_build():
 	if ghost_tower:
 		ghost_tower.queue_free()
 		ghost_tower = null
+		
+	# Закрываем меню улучшения при отмене строительного режима или нажатии ПКМ
+	if upgrade_menu:
+		upgrade_menu.visible = false
+		upgrade_menu.selected_tower = null
+
 
 func snap_to_grid(pos: Vector2) -> Vector2:
 	var s = Vector2(tile_size, tile_size)
@@ -194,3 +226,24 @@ func _on_button_menu_pressed() -> void:
 func _on_button_menu_2_pressed() -> void:
 	get_tree().paused = false 
 	get_tree().change_scene_to_file("res://Scenes/LevelSelect.tscn")
+
+func try_upgrade_tower_at_mouse():
+	var mouse_grid_pos = snap_to_grid(get_global_mouse_position())
+	
+	if mouse_grid_pos in occupied_cells:
+		for child in get_children():
+			if child is Node2D and child.global_position == mouse_grid_pos:
+				var upgrader = child.get_node_or_null("TowerUpgrader")
+				if upgrader:
+					# Используем нашу переменную, созданную на Шаге 2
+					if upgrade_menu:
+						upgrade_menu.open_for_tower(child)
+				break
+	else:
+		# Если кликнули по пустой земле — скрываем меню
+		if upgrade_menu and upgrade_menu.visible:
+			upgrade_menu.visible = false
+			upgrade_menu.selected_tower = null
+
+
+	
