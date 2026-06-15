@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dsugf6uwdghce"]
 
-[ext_resource type="Script" uid="uid://d30qk3wvhgpkn" path="res://Scenes/main_menu.gd" id="1_web8u"]
-[ext_resource type="Texture2D" uid="uid://b5kx0gu6gaa85" path="res://Assets/Menu/images-_1_.png" id="2_rtnl3"]
+[ext_resource type="Script" uid="uid://d30qk3wvhgpkn" path="res://scenes/main_menu.gd" id="1_web8u"]
+[ext_resource type="Texture2D" uid="uid://b5kx0gu6gaa85" path="res://assets/Menu/images-_1_.png" id="2_rtnl3"]
 
 [node name="Mainmenu" type="Control" unique_id=1413690821]
 layout_mode = 3
@@ -38,6 +38,10 @@ offset_top = 375.0
 offset_right = 802.0
 offset_bottom = 507.0
 text = "Quit"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=436565324]
+position = Vector2(582, 326)
+zoom = Vector2(1.05, 1.09)
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

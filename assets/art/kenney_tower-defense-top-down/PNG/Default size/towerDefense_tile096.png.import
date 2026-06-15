@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dnxc6yfwpmd5s"
-path="res://.godot/imported/towerDefense_tile096.png-1d4f01e31a450f56789abba362f2995c.ctex"
+path="res://.godot/imported/towerDefense_tile096.png-a3fb78e66a6afa81d7e9859407c8198f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/art/kenney_tower-defense-top-down/PNG/Default size/towerDefense_tile096.png"
-dest_files=["res://.godot/imported/towerDefense_tile096.png-1d4f01e31a450f56789abba362f2995c.ctex"]
+source_file="res://assets/art/kenney_tower-defense-top-down/PNG/Default size/towerDefense_tile096.png"
+dest_files=["res://.godot/imported/towerDefense_tile096.png-a3fb78e66a6afa81d7e9859407c8198f.ctex"]
 
 [params]
 
